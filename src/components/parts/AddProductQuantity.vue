@@ -1,0 +1,95 @@
+<script>
+export default {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+
+  methods: {
+    decrementQuantityNumber() {
+      if (this.count == 0) {
+        return;
+      }
+
+      this.count--;
+    },
+
+    incrementQunatityNumber() {
+      if (this.count >= 0) {
+        this.count++;
+      }
+    },
+  },
+};
+</script>
+
+<template>
+  <!--Add product quantity -->
+  <div class="add-to-cart-number">
+    <div class="add-to-cart-number-wrapper">
+      <div class="quantity-btn-wrapper" @click="decrementQuantityNumber">
+        <img
+          src="../../assets/images/icon-decrement-quantity.svg"
+          alt="Decrement"
+        />
+      </div>
+      <div class="quantity-nr">{{ count }}</div>
+      <div class="quantity-btn-wrapper" @click="incrementQunatityNumber">
+        <img
+          src="../../assets/images/icon-increment-quantity.svg"
+          alt="Increment"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.add-to-cart-number {
+  margin-bottom: 41px;
+}
+.add-to-cart-number,
+.add-to-cart-number-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.add-to-cart-number-wrapper {
+  border: 1px solid var(--rose300);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 500;
+  background-color: white;
+  margin: -25px;
+  cursor: pointer;
+  user-select: none;
+  min-width: 160px;
+}
+
+.add-to-cart-number-wrapper {
+  justify-content: space-between;
+  background: var(--red);
+  border-color: var(--red);
+  cursor: default;
+  color: white;
+}
+
+.quantity-btn-wrapper {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.quantity-nr {
+  min-width: 50px;
+  text-align: center;
+}
+</style>
