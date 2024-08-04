@@ -6,28 +6,19 @@ export default {
   },
 
   data() {
-    return {
-      path: "/src/",
-      fullPath: "",
-    };
+    return {};
   },
 
-  mounted() {
-    this.imageUrl();
-  },
+  mounted() {},
 
-  methods: {
-    imageUrl() {
-      this.fullPath = this.path + this.image;
-    },
-  },
+  methods: {},
 };
 </script>
 
 <template>
   <!--Product main image-->
   <div class="product-image">
-    <img :src="fullPath" :alt="image" :class="{ active: isActive }" />
+    <img :src="image" :alt="image" :class="{ active: isActive }" />
   </div>
 </template>
 
