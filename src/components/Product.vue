@@ -24,8 +24,12 @@ export default {
   },
 
   methods: {
-    AddToCart() {
+    addToCart() {
       this.showAddToCart = true;
+    },
+
+    handleHideAddToCart() {
+      this.showAddToCart = !this.showAddToCart;
     },
   },
 };
@@ -36,9 +40,12 @@ export default {
     <!--Product main image-->
     <ProductImage :image="image" :isActive="showAddToCart" />
     <!--Add product to cart-->
-    <AddToCartButton v-if="!showAddToCart" @click="AddToCart" />
+    <AddToCartButton v-if="!showAddToCart" @click="addToCart" />
     <!--Add product quantity -->
-    <AddProductQuantity v-if="showAddToCart" />
+    <AddProductQuantity
+      v-if="showAddToCart"
+      @hideAddToCart="handleHideAddToCart"
+    />
     <!--Product info-->
     <ProductInfo :description="description" :title="title" :price="price" />
   </div>

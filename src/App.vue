@@ -1,73 +1,47 @@
-<script setup>
+<script>
 import Product from "./components/Product.vue";
+
+export default {
+  data() {
+    return {
+      productsArr: [],
+    };
+  },
+  components: {
+    Product,
+  },
+
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      try {
+        const response = await fetch("data.json");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        this.productsArr = await response.json();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+  },
+};
 </script>
 
 <template>
   <div class="main-container">
     <!--Main Title-->
     <h1>Desserts</h1>
-    <!--Waffle with Berries-->
+
     <Product
-      image="image-waffle-mobile.jpg"
-      description="Waffle"
-      title="Waffle with Berries"
-      :price="6.5"
-    />
-    <!--Vanilla Bean Creme Brulee-->
-    <Product
-      image="image-creme-brulee-mobile.jpg"
-      description="Creme Brulee"
-      title="Vanilla Bean Creme Brulee"
-      :price="7.0"
-    />
-    <!--Macaron Mix of Five-->
-    <Product
-      image="image-macaron-mobile.jpg"
-      description="Macaron"
-      title="Macaron Mix of Five"
-      :price="8.0"
-    />
-    <!--Classic Tiramisu-->
-    <Product
-      image="image-tiramisu-mobile.jpg"
-      description="Tiramisu"
-      title="Classic Tiramisu"
-      :price="5.5"
-    />
-    <!--Pistachio Baklava-->
-    <Product
-      image="image-baklava-mobile.jpg"
-      description="Baklava"
-      title="Pistachio Baklava"
-      :price="4.0"
-    />
-    <!--Lemon Meringue Pie-->
-    <Product
-      image="image-meringue-mobile.jpg"
-      description="Pie"
-      title="Lemon Meringue Pie"
-      :price="5.0"
-    />
-    <!--Red Velvet Cake-->
-    <Product
-      image="image-cake-mobile.jpg"
-      description="Cake"
-      title="Red Velvet Cake"
-      :price="4.5"
-    />
-    <!--Salted Caramel Brownie-->
-    <Product
-      image="image-brownie-mobile.jpg"
-      description="Brownie"
-      title="Salted Caramel Brownie"
-      :price="5.5"
-    />
-    <!--Vanilla Panna Cotta-->
-    <Product
-      image="image-panna-cotta-mobile.jpg"
-      description="Panna Cotta"
-      title="Vanilla Panna Cotta"
-      :price="6.5"
+      v-for="(product, index) in productsArr"
+      :key="index"
+      :image="product.image.mobile"
+      :description="product.category"
+      :title="product.name"
+      :price="product.price"
     />
   </div>
 </template>

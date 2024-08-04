@@ -1,21 +1,23 @@
 <script>
 export default {
+  emits: ["hideAddToCart"],
   data() {
     return {
-      count: 0,
+      count: 1,
     };
   },
 
   methods: {
     decrementQuantityNumber() {
       if (this.count == 0) {
+        this.$emit("hideAddToCart");
         return;
       }
 
       this.count--;
     },
 
-    incrementQunatityNumber() {
+    incrementQuantityNumber() {
       if (this.count >= 0) {
         this.count++;
       }
@@ -35,7 +37,7 @@ export default {
         />
       </div>
       <div class="quantity-nr">{{ count }}</div>
-      <div class="quantity-btn-wrapper" @click="incrementQunatityNumber">
+      <div class="quantity-btn-wrapper" @click="incrementQuantityNumber">
         <img
           src="../../assets/images/icon-increment-quantity.svg"
           alt="Increment"

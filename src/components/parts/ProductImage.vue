@@ -7,7 +7,7 @@ export default {
 
   data() {
     return {
-      path: "/src/assets/images/",
+      path: "/src/",
       fullPath: "",
     };
   },
