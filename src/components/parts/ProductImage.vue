@@ -4,13 +4,10 @@ export default {
     image: String,
     isActive: Boolean,
   },
-
   data() {
     return {};
   },
-
   mounted() {},
-
   methods: {},
 };
 </script>

@@ -1,6 +1,5 @@
 <script>
 import AddToCartButton from "./parts/AddToCartButton.vue";
-import AddProductQuantity from "./parts/AddProductQuantity.vue";
 import ProductImage from "./parts/ProductImage.vue";
 import ProductInfo from "./parts/ProductInfo.vue";
 
@@ -18,17 +17,15 @@ export default {
   },
   components: {
     AddToCartButton,
-    AddProductQuantity,
     ProductImage,
     ProductInfo,
   },
-
   methods: {
     addToCart() {
       this.showAddToCart = true;
     },
 
-    handleHideAddToCart() {
+    handleHideAddToCart(blabla) {
       this.showAddToCart = !this.showAddToCart;
     },
   },
@@ -40,12 +37,7 @@ export default {
     <!--Product main image-->
     <ProductImage :image="image" :isActive="showAddToCart" />
     <!--Add product to cart-->
-    <AddToCartButton v-if="!showAddToCart" @click="addToCart" />
-    <!--Add product quantity -->
-    <AddProductQuantity
-      v-if="showAddToCart"
-      @hideAddToCart="handleHideAddToCart"
-    />
+    <AddToCartButton @hideAddToCart="handleHideAddToCart" />
     <!--Product info-->
     <ProductInfo :description="description" :title="title" :price="price" />
   </div>
