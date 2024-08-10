@@ -247,6 +247,7 @@ export default {
 }
 
 .order-btn {
+  transition: opacity 200ms ease-in-out, background-color 200ms ease-in-out;
   width: 100%;
   border: none;
   padding: 15px;
@@ -255,6 +256,12 @@ export default {
   color: white;
   font-weight: 500;
   cursor: pointer;
+}
+
+.order-btn:hover {
+  color: var(--red);
+  border: 1px solid var(--red);
+  background-color: white;
 }
 
 .order-total-wrapper {

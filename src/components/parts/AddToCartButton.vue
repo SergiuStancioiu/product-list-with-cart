@@ -85,6 +85,7 @@ export default {
 }
 
 .cart-wrapper {
+  transition: opacity 200ms ease-in-out, background-color 200ms ease-in-out;
   border: 1px solid var(--rose300);
   padding: 10px 20px;
   border-radius: 50px;
@@ -96,6 +97,11 @@ export default {
   min-width: 160px;
 }
 
+.cart-wrapper:hover {
+  border-color: var(--rose300);
+  background-color: var(--rose300);
+  color: white;
+}
 .add-to-cart-number {
   margin-bottom: 41px;
 }
