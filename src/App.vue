@@ -1,5 +1,6 @@
 <script>
-import Product from "./components/Product.vue";
+import Product from './components/Product.vue';
+import Cart from './components/Cart.vue';
 
 export default {
   data() {
@@ -9,6 +10,7 @@ export default {
   },
   components: {
     Product,
+    Cart,
   },
 
   created() {
@@ -17,13 +19,13 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await fetch("data.json");
+        const response = await fetch('data.json');
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         this.productsArr = await response.json();
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     },
   },
@@ -43,18 +45,20 @@ export default {
       :title="product.name"
       :price="product.price"
     />
+    <Cart />
   </div>
 </template>
 
 <style>
 .main-container {
-  padding: 0 25px;
+  padding: 34px 25px 20px;
   max-width: 700px;
   margin: 0 auto;
+  background-color: var(--rose50);
 }
 
 h1 {
-  margin-top: 34px;
-  margin-bottom: 41px;
+  margin: 0;
+  padding-bottom: 41px;
 }
 </style>
