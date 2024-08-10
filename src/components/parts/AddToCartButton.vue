@@ -1,6 +1,6 @@
 <script>
 export default {
-  emits: ["hide-add-to-cart", "add-state-for-image"],
+  emits: ['hide-add-to-cart'],
   data() {
     return {
       count: 1,
@@ -12,7 +12,7 @@ export default {
     decrementQuantityNumber() {
       if (this.count == 1) {
         this.addProductQuantity = false;
-        this.$emit("hide-add-to-cart", true);
+        this.$emit('hide-add-to-cart', true);
         return;
       }
 
@@ -25,7 +25,7 @@ export default {
       }
     },
     toggleAddProductQty() {
-      this.$emit("hide-add-to-cart", true);
+      this.$emit('hide-add-to-cart', true);
       this.addProductQuantity = !this.addProductQuantity;
     },
   },
@@ -128,7 +128,7 @@ export default {
 
 .quantity-btn-wrapper {
   padding: 13px;
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .quantity-btn-inner-wrapper {

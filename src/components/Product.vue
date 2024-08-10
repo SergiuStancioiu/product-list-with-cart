@@ -1,7 +1,7 @@
 <script>
-import AddToCartButton from "./parts/AddToCartButton.vue";
-import ProductImage from "./parts/ProductImage.vue";
-import ProductInfo from "./parts/ProductInfo.vue";
+import AddToCartButton from './parts/AddToCartButton.vue';
+import ProductImage from './parts/ProductImage.vue';
+import ProductInfo from './parts/ProductInfo.vue';
 
 export default {
   props: {
@@ -25,7 +25,7 @@ export default {
       this.showAddToCart = true;
     },
 
-    handleHideAddToCart(blabla) {
+    handleHideAddToCart() {
       this.showAddToCart = !this.showAddToCart;
     },
   },
