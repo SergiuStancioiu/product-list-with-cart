@@ -1,5 +1,5 @@
 <script>
-import Product from "./components/Product.vue";
+import Product from './components/Product.vue';
 
 export default {
   data() {
@@ -17,13 +17,13 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await fetch("data.json");
+        const response = await fetch('data.json');
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         this.productsArr = await response.json();
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     },
   },
@@ -44,6 +44,7 @@ export default {
       :price="product.price"
     />
   </div>
+  <div class="cart"></div>
 </template>
 
 <style>
