@@ -12,7 +12,7 @@ export default {
   },
   data() {
     return {
-      showAddToCart: false,
+      isActive: false,
     };
   },
   components: {
@@ -22,11 +22,11 @@ export default {
   },
   methods: {
     addToCart() {
-      this.showAddToCart = true;
+      this.isActive = true;
     },
 
-    handleHideAddToCart() {
-      this.showAddToCart = !this.showAddToCart;
+    toggleActive() {
+      this.isActive = !this.isActive;
     },
   },
 };
@@ -35,9 +35,9 @@ export default {
 <template>
   <div class="product">
     <!--Product main image-->
-    <ProductImage :image="image" :isActive="showAddToCart" />
+    <ProductImage :image="image" :isActive="isActive" />
     <!--Add product to cart-->
-    <AddToCartButton @hideAddToCart="handleHideAddToCart" />
+    <AddToCartButton @toggleActiveProduct="toggleActive" />
     <!--Product info-->
     <ProductInfo :description="description" :title="title" :price="price" />
   </div>
