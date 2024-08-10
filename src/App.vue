@@ -51,7 +51,7 @@ export default {
 
 <style>
 .main-container {
-  padding: 0 25px;
+  padding: 34px 25px 20px;
   max-width: 700px;
   margin: 0 auto;
   background-color: var(--rose100);
@@ -59,6 +59,6 @@ export default {
 
 h1 {
   margin: 0;
-  padding: 34px 0 41px 0;
+  padding-bottom: 41px;
 }
 </style>

@@ -26,4 +26,30 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.cart-container {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cart-heading h2 {
+  color: var(--red);
+}
+
+.cart-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-info p {
+  margin: 0;
+  color: var(--rose400);
+  font-weight: 500;
+}
+</style>
