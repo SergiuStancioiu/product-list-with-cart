@@ -1,5 +1,6 @@
 <script>
 export default {
+  emits: ['hide-add-to-cart'],
   data() {
     return {
       count: 1,
@@ -11,6 +12,7 @@ export default {
     decrementQuantityNumber() {
       if (this.count == 1) {
         this.addProductQuantity = false;
+        this.$emit('hide-add-to-cart', true);
         return;
       }
 
@@ -23,6 +25,7 @@ export default {
       }
     },
     toggleAddProductQty() {
+      this.$emit('hide-add-to-cart', true);
       this.addProductQuantity = !this.addProductQuantity;
     },
   },

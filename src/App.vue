@@ -1,5 +1,6 @@
 <script>
 import Product from './components/Product.vue';
+import Cart from './components/Cart.vue';
 
 export default {
   data() {
@@ -9,6 +10,7 @@ export default {
   },
   components: {
     Product,
+    Cart,
   },
 
   created() {
@@ -43,8 +45,8 @@ export default {
       :title="product.name"
       :price="product.price"
     />
+    <Cart />
   </div>
-  <div class="cart"></div>
 </template>
 
 <style>
@@ -52,10 +54,11 @@ export default {
   padding: 0 25px;
   max-width: 700px;
   margin: 0 auto;
+  background-color: var(--rose100);
 }
 
 h1 {
-  margin-top: 34px;
-  margin-bottom: 41px;
+  margin: 0;
+  padding: 34px 0 41px 0;
 }
 </style>

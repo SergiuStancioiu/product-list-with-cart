@@ -29,7 +29,7 @@ export default {
 
 .product-image img {
   border-radius: 10px;
-  border: 2px solid white;
+  border: 2px solid transparent;
 }
 
 .active {
