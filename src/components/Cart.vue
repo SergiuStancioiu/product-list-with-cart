@@ -203,6 +203,7 @@ export default {
 
 .delete-product {
   width: 20px;
+  cursor: pointer;
 }
 
 .delete-product img {
@@ -253,6 +254,7 @@ export default {
   background-color: var(--red);
   color: white;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .order-total-wrapper {
