@@ -54,7 +54,6 @@ export default {
   padding: 34px 25px 20px;
   max-width: 700px;
   margin: 0 auto;
-  background-color: var(--rose50);
 }
 
 h1 {

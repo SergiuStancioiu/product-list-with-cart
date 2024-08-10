@@ -39,6 +39,7 @@ body {
   margin: 0;
   font-family: 'Red Hat Text', sans-serif;
   font-size: 16px;
+  background-color: var(--rose50);
 }
 
 /* Set shorter line heights on headings and interactive elements */
