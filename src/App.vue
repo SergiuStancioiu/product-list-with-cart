@@ -41,7 +41,7 @@ export default {
       v-for="(product, index) in productsArr"
       :key="index"
       :image="product.image.mobile"
-      :description="product.category"
+      :category="product.category"
       :title="product.name"
       :price="product.price"
     />

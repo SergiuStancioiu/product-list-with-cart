@@ -1,7 +1,7 @@
 <script>
 export default {
   props: {
-    description: String,
+    category: String,
     title: String,
     price: Number,
   },
@@ -16,14 +16,14 @@ export default {
 <template>
   <!--Product info-->
   <div class="product-info">
-    <p class="desc">{{ description }}</p>
+    <p class="categ">{{ category }}</p>
     <p class="title">{{ title }}</p>
     <p class="price">${{ price }}</p>
   </div>
 </template>
 
 <style scoped>
-.desc {
+.categ {
   color: var(--rose300);
 }
 

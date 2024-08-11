@@ -6,7 +6,7 @@ import ProductInfo from './parts/ProductInfo.vue';
 export default {
   props: {
     image: String,
-    description: String,
+    category: String,
     title: String,
     price: Number,
   },
@@ -39,7 +39,7 @@ export default {
     <!--Add product to cart-->
     <AddToCartButton @toggleActiveProduct="toggleActive" />
     <!--Product info-->
-    <ProductInfo :description="description" :title="title" :price="price" />
+    <ProductInfo :category="category" :title="title" :price="price" />
   </div>
 </template>
 
