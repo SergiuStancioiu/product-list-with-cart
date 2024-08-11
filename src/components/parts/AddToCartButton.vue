@@ -98,9 +98,8 @@ export default {
 }
 
 .cart-wrapper:hover {
-  border-color: var(--rose300);
-  background-color: var(--rose300);
-  color: white;
+  border-color: var(--red);
+  background-color: var(--rose50);
 }
 .add-to-cart-number {
   margin-bottom: 41px;
