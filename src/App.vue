@@ -42,7 +42,7 @@ export default {
       :key="index"
       :image="product.image.mobile"
       :category="product.category"
-      :title="product.name"
+      :name="product.name"
       :price="product.price"
     />
     <Cart />

@@ -6,9 +6,7 @@ export default {
     price: Number,
   },
   data() {
-    return {
-      count: 0,
-    };
+    return {};
   },
 };
 </script>

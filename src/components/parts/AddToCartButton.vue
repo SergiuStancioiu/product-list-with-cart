@@ -1,30 +1,43 @@
 <script>
+import { mapActions } from 'pinia';
+import { useCartStore } from '../../stores/cart';
+
 export default {
+  props: { product: Object },
   emits: ['toggle-active-product'],
   data() {
     return {
-      count: 1,
+      count: 0,
       addProductQuantity: false,
     };
   },
 
   methods: {
-    decrementQuantityNumber() {
-      if (this.count == 1) {
-        this.addProductQuantity = false;
-        this.$emit('toggle-active-product', true);
-        return;
+    ...mapActions(useCartStore, {
+      addProductToCart: 'addProduct',
+      removeProduct: 'removeProduct',
+    }),
+
+    addProduct(isIncrement) {
+      if (isIncrement) {
+        this.count++;
+      } else {
+        if (this.count == 1) {
+          this.addProductQuantity = false;
+          this.$emit('toggle-active-product', true);
+        }
+
+        this.count--;
       }
 
-      this.count--;
-    },
-
-    incrementQuantityNumber() {
-      if (this.count >= 0) {
-        this.count++;
+      if (this.count > 0) {
+        this.addProductToCart(this.product, this.count);
+      } else {
+        this.removeProduct(this.product.name);
       }
     },
     toggleAddProductQty() {
+      this.addProduct(true);
       this.$emit('toggle-active-product', true);
       this.addProductQuantity = !this.addProductQuantity;
     },
@@ -49,7 +62,7 @@ export default {
   <!--Add product quantity -->
   <div class="add-to-cart-number" v-if="addProductQuantity">
     <div class="add-to-cart-number-wrapper">
-      <div class="quantity-btn-wrapper" @click="decrementQuantityNumber">
+      <div class="quantity-btn-wrapper" @click="addProduct(false)">
         <div class="quantity-btn-inner-wrapper">
           <img
             src="../../assets/images/icon-decrement-quantity.svg"
@@ -59,7 +72,7 @@ export default {
       </div>
 
       <div class="quantity-nr">{{ count }}</div>
-      <div class="quantity-btn-wrapper" @click="incrementQuantityNumber">
+      <div class="quantity-btn-wrapper" @click="addProduct(true)">
         <div class="quantity-btn-inner-wrapper">
           <img
             src="../../assets/images/icon-increment-quantity.svg"
