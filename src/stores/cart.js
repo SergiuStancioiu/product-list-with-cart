@@ -31,8 +31,6 @@ export const useCartStore = defineStore('cart', {
         return false;
       });
 
-      console.log(newCart);
-
       this.cart = newCart;
     },
   },
