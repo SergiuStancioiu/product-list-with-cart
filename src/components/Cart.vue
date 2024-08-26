@@ -1,9 +1,16 @@
 <script>
+import { mapState, mapActions } from 'pinia';
+import { useCartStore } from '../stores/cart';
+
 export default {
   data() {
-    return {
-      productsInCart: 1,
-    };
+    return {};
+  },
+  computed: {
+    ...mapState(useCartStore, ['cart', 'total', 'totalProducts']),
+  },
+  methods: {
+    ...mapActions(useCartStore, ['removeProduct']),
   },
 };
 </script>
@@ -13,10 +20,10 @@ export default {
   <div class="cart-container">
     <!--Cart heading-->
     <div class="cart-heading">
-      <h2>Your Cart (0)</h2>
+      <h2>Your Cart ({{ totalProducts }})</h2>
     </div>
     <!--Cart content when is empty-->
-    <div class="cart-content-empty" v-if="productsInCart == 0">
+    <div class="cart-content-empty" v-if="cart.length == 0">
       <div class="cart-empty-image">
         <img
           src="../assets/images/illustration-empty-cart.svg"
@@ -28,20 +35,28 @@ export default {
       </div>
     </div>
     <!--Cart content when we have products added-->
-    <div class="products-in-cart" v-if="productsInCart > 0">
-      <!--Classic Tiramisu-->
-      <div class="cart-content">
+    <div class="products-in-cart" v-if="cart.length > 0">
+      <div class="cart-content" v-for="item in cart" :key="item.product.name">
         <div class="cart-product">
           <div class="cart-product-name">
-            <p>Classic Tiramisu</p>
+            <p>{{ item.product.name }}</p>
           </div>
           <div class="cart-product-qty-price-total">
-            <div class="product-qty"><span>1x</span></div>
-            <div class="product-price"><span>@ $5.50</span></div>
-            <div class="product-total"><span>$5.50</span></div>
+            <div class="product-qty">
+              <span>{{ item.qty }}x</span>
+            </div>
+            <div class="product-price">
+              <span>@ ${{ item.product.price }}</span>
+            </div>
+            <div class="product-total">
+              <span>${{ item.product.price * item.qty }}</span>
+            </div>
           </div>
         </div>
-        <div class="delete-product-wrapper">
+        <div
+          class="delete-product-wrapper"
+          @click="removeProduct(item.product.name)"
+        >
           <div class="delete-product">
             <img
               src="../assets/images/icon-remove-item.svg"
@@ -50,54 +65,13 @@ export default {
           </div>
         </div>
       </div>
-      <!--Vanilla Bean Crème Brûlée-->
-      <div class="cart-content">
-        <div class="cart-product">
-          <div class="cart-product-name">
-            <p>Vanilla Bean Crème Brûlée</p>
-          </div>
-          <div class="cart-product-qty-price-total">
-            <div class="product-qty"><span>4x</span></div>
-            <div class="product-price"><span>@ $7.00</span></div>
-            <div class="product-total"><span>$28.00</span></div>
-          </div>
-        </div>
-        <div class="delete-product-wrapper">
-          <div class="delete-product">
-            <img
-              src="../assets/images/icon-remove-item.svg"
-              alt="Delete Product"
-            />
-          </div>
-        </div>
-      </div>
-      <!--Vanilla Panna Cotta-->
-      <div class="cart-content">
-        <div class="cart-product">
-          <div class="cart-product-name">
-            <p>Vanilla Panna Cotta</p>
-          </div>
-          <div class="cart-product-qty-price-total">
-            <div class="product-qty"><span>2x</span></div>
-            <div class="product-price"><span>@ $6.50</span></div>
-            <div class="product-total"><span>$13.00</span></div>
-          </div>
-        </div>
-        <div class="delete-product-wrapper">
-          <div class="delete-product">
-            <img
-              src="../assets/images/icon-remove-item.svg"
-              alt="Delete Product"
-            />
-          </div>
-        </div>
-      </div>
+
       <!--Order Total-->
       <div class="order-total-wrapper">
         <!--Order total-->
         <div class="order-total">
           <div class="title"><p>Order Total</p></div>
-          <div class="total-price">$46.50</div>
+          <div class="total-price">${{ total }}</div>
         </div>
         <!--Carbon neutral-->
         <div class="carbon-neutral">
@@ -203,6 +177,7 @@ export default {
 
 .delete-product {
   width: 20px;
+  cursor: pointer;
 }
 
 .delete-product img {
@@ -246,6 +221,7 @@ export default {
 }
 
 .order-btn {
+  transition: opacity 200ms ease-in-out, background-color 200ms ease-in-out;
   width: 100%;
   border: none;
   padding: 15px;
@@ -253,6 +229,13 @@ export default {
   background-color: var(--red);
   color: white;
   font-weight: 500;
+  cursor: pointer;
+}
+
+.order-btn:hover {
+  color: var(--red);
+  border: 1px solid var(--red);
+  background-color: white;
 }
 
 .order-total-wrapper {

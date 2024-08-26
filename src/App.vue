@@ -41,8 +41,8 @@ export default {
       v-for="(product, index) in productsArr"
       :key="index"
       :image="product.image.mobile"
-      :description="product.category"
-      :title="product.name"
+      :category="product.category"
+      :name="product.name"
       :price="product.price"
     />
     <Cart />
@@ -54,7 +54,6 @@ export default {
   padding: 34px 25px 20px;
   max-width: 700px;
   margin: 0 auto;
-  background-color: var(--rose50);
 }
 
 h1 {

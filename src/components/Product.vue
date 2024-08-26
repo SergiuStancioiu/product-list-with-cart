@@ -6,8 +6,8 @@ import ProductInfo from './parts/ProductInfo.vue';
 export default {
   props: {
     image: String,
-    description: String,
-    title: String,
+    category: String,
+    name: String,
     price: Number,
   },
   data() {
@@ -37,9 +37,12 @@ export default {
     <!--Product main image-->
     <ProductImage :image="image" :isActive="isActive" />
     <!--Add product to cart-->
-    <AddToCartButton @toggleActiveProduct="toggleActive" />
+    <AddToCartButton
+      :product="{ image, category, name, price }"
+      @toggleActiveProduct="toggleActive"
+    />
     <!--Product info-->
-    <ProductInfo :description="description" :title="title" :price="price" />
+    <ProductInfo :category="category" :title="name" :price="price" />
   </div>
 </template>
 
