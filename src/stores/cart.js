@@ -45,5 +45,11 @@ export const useCartStore = defineStore('cart', {
         return (acumulator += item.qty);
       }, 0);
     },
+    // ✅ New Getter
+    isProductInCart: (state) => {
+      return (productName) => {
+        return state.cart.some((item) => item.product.name === productName);
+      };
+    },
   },
 });
