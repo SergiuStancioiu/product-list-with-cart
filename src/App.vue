@@ -34,18 +34,24 @@ export default {
 
 <template>
   <div class="main-container">
-    <!--Main Title-->
-    <h1>Desserts</h1>
+    <div class="product-cart-wrapper">
+      <div class="">
+        <!--Main Title-->
+        <h1>Desserts</h1>
+        <div class="product-wrapper">
+          <Product
+            v-for="(product, index) in productsArr"
+            :key="index"
+            :image="product.image.mobile"
+            :category="product.category"
+            :name="product.name"
+            :price="product.price"
+          />
+        </div>
+      </div>
 
-    <Product
-      v-for="(product, index) in productsArr"
-      :key="index"
-      :image="product.image.mobile"
-      :category="product.category"
-      :name="product.name"
-      :price="product.price"
-    />
-    <Cart />
+      <div><Cart /></div>
+    </div>
   </div>
 </template>
 
@@ -59,5 +65,41 @@ export default {
 h1 {
   margin: 0;
   padding-bottom: 41px;
+}
+
+.product-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 576px) {
+  .product-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .product-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 991px) {
+  .product-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .product-cart-wrapper {
+    display: flex;
+    gap: 20px;
+  }
+
+  .main-container {
+    max-width: 1200px;
+  }
 }
 </style>

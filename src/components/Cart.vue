@@ -35,7 +35,7 @@ export default {
       </div>
     </div>
     <!--Cart content when we have products added-->
-    <div class="products-in-cart" v-if="cart.length > 0">
+    <div class="products-in-cart" v-if="cart.length != 0">
       <div class="cart-content" v-for="item in cart" :key="item.product.name">
         <div class="cart-product">
           <div class="cart-product-name">
@@ -99,9 +99,10 @@ export default {
   padding: 20px;
   background-color: white;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+}
+
+.cart-heading {
+  padding-bottom: 20px;
 }
 
 .cart-heading h2 {
@@ -242,5 +243,24 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+@media (min-width: 991px) {
+  .cart-container {
+    width: 300px;
+    min-width: 300px;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+
+  .cart-empty-image {
+    width: 75px;
+  }
+
+  .cart-heading {
+    padding-bottom: 25px;
+  }
 }
 </style>
